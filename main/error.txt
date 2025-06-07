@@ -1,0 +1,27 @@
+"""
+WHile doing this, error 1
+streamlit.errors.StreamlitSetPageConfigMustBeFirstCommandError: set_page_config() can only be called once per app page, 
+and must be called as the first Streamlit command in your script.
+For this, i added
+st.set_page_config(layout="wide", page_title="PhonePe India Data")
+st.title("📊 Interactive India State-wise Dashboard")
+
+# Add the parent directory (i.e., project root) to sys.path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+and removed st.set_page from all others. It must come first i.t before sys
+
+error 2
+streamlit.errors.StreamlitDuplicateElementId: There are multiple checkbox elements with the same auto-generated ID. 
+When this element is created, it is assigned an internal ID based on the element type and provided parameters. 
+Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique key argument to the checkbox element.
+for this, in all agg_insu, agg_trans etc, i must change st.checkbox("Show Raw Data") with unique key as
+st.checkbox("Show Raw Data",key="something)
+"""
+run the phonepe.py program
+PS D:\BONEYS\WEB\PYTHON> cd Project
+PS D:\BONEYS\WEB\PYTHON\Project> cd PhonePe
+PS D:\BONEYS\WEB\PYTHON\Project\PhonePe> streamlit run next/PhonePe.py
+control c to stop the running of app
